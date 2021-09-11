@@ -1,4 +1,4 @@
-header{
+.carrito-header{
     background-color: rgb(10, 137, 241);
     height: 60px;
     display: flex;
@@ -8,20 +8,20 @@ header{
     color: aliceblue;
 }
 
-svg{
+.carrito-svg{
 position: relative;
 right: -15px;
 bottom: -18px;
 }
 
-footer{
+.carrito-footer{
     background-color: rgb(10, 137, 241);
     height: 60px;
     padding-left: 5px;
     position: relative;
 }
 
-.imagenes{
+.carrito-imagenes{
     margin-block: 10px;
     background-color: rgb(213, 201, 219);
     padding:5px;
@@ -29,7 +29,36 @@ footer{
     display: inline-block; 
     border-style: outset;
 }
-img{
+.carrito-img{
     width: 200px; 
     height: 200px;
 }
+html, body{
+    min-height: 100%;
+  }
+
+
+.logo {
+    width: 200px;
+
+}
+
+.menu {
+    display: flex;
+    background-color: rgb(54, 161, 72);
+  }
+
+  .menu > div {
+    background-color: #e1e78c;
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .instagram {
+    max-width: 60px;
+  }
+  
+  .facebook {
+    max-width: 60px;
+  }
