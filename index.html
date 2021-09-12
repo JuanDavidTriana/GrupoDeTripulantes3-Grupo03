@@ -5,55 +5,146 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i-fruver</title>
-		<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <div class="page"> 
-        <div class="header">
-        	<img class="logo"src="./imagenes/ifruverLogo.jpeg">
-					<div class="content-menu">
-						<nav class="menu">
-							<div>
-								<a href="#">Inicio</a>
-							</div> 
-							<div>
-								<a href="#/blog">Blog Informativo</a>
-							</div>
-							<div>
-								<a href="#/carrito">Carrito de compras</a>
-							</div>
-							<div>
-								<a href="#/contacto">Contactanos</a>
-							</div>
-							<div>
-								<a href="#/tienda">Tienda</a>
-							</div>
-						</nav>
-					</div>
-        </div>
-				<div >
-					<iframe src="/pages/carousel.html" title="Carousel" width="600px" height="300px">
-					</iframe>
-				</div>
-				<div class="footer">
-					<div class="footer-logos">
-						<div>
-							<div>Más Información</div>
-							<p>
-								Correo electrónico: ventas@ifruver.com.co<br>
-								Teléfonos: 312 890 3467  - 321 765 8734<br>
-								Encuentranos en redes sociales
-							</p>
-						</div>
-						<div>
-							<img src="imagenes/instagram.png" class="instagram"> <p>i-fruvrer</p>
-						</div>
-						<div>
-							<img src="imagenes/facebook-icon.png" class="facebook"> <p>i-fruver</p>
-						</div>
-					</div>
-					<div id="copyright">Copyright&copy; 2008 - Página creada por Angelica Marmolejo - Todos los derechos reservados</div>
-				</div>
+	<!-- inicio encabezado del sitio -->
+    <header class="header">
+		<img class="logo"src="./imagenes/ifruverLogo.jpeg">
+		<nav class="menu">
+			<a href="#">Inicio</a>
+			<a href="#/blog">Blog Informativo</a>	
+			<a href="#/tienda">Tienda</a>
+			<a href="#/contacto">Contactanos</a>
+			<a href="#team">Nuestro equipo</a>
+			<a href="./pages/carrito.html">					
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-discount" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+					<circle cx="6" cy="19" r="2" />
+					<circle cx="17" cy="19" r="2" />
+					<path d="M17 17h-11v-14h-2" />
+					<path d="M20 6l-1 7h-13" />
+					<path d="M10 10l6 -6" />
+					<circle cx="10.5" cy="4.5" r=".5" />
+					<circle cx="15.5" cy="9.5" r=".5" />
+				</svg>
+			</a>
+		</nav>
+	</header>
+	<!-- fin encabezado del sitio -->
+
+	<!-- Carrousel -->
+	<div class="carrousel">
+		<iframe src="/pages/carousel.html" title="Carousel" width="600px" height="300px">
+		</iframe>
+	</div>
+
+	<!-- inicio contenido principal -->
+	<main class="contenido">
+		<h2>Acerca de Nosotros</h2>
+        <!-- inicio sección de noticias -->
+        <section  class="nosotros-section">
+            <div class="nosotros-info">
+                <div class="nosotros-header">
+                    <img class="nosotros-info__imagen" src="./imagenes/canastaFrutasYVerduras.jpg" alt="">
+                </div>
+                <p class="nosotros-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+				<p class="nosotros-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </div>
+        </section>
+        <!-- fin sección de noticias -->
+
+
+        <h2>Equipo</h2>
+        <!-- inicio sección de equipo -->
+        <section id="team" class="team-section">
+
+            <article class="team-info">
+                <img class="team-info__imagen" src="./imagenes/Angelica.jpg" alt="Angelica Marmolejo">
+                <h3 class="team-info__title">Angelica Marmolejo</h3>
+                <p class="team-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </article>
+
+            <article class="team-info">
+                <img class="team-info__imagen" src="./imagenes/Alexander.jpg" alt="Alexander Pabón">
+                <h3 class="team-info__title">Alexander Pabón</h3>
+                <p class="team-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </article>
+
+            <article class="team-info">
+                <img class="team-info__imagen" src="./imagenes/Adriana.jpg" alt="Adriana Aguilar">
+                <h3 class="team-info__title">Adriana María Aguilar</h3>
+                <p class="team-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </article>
+
+            <article class="team-info">
+                <img class="team-info__imagen" src="./imagenes/Gabriel.jpg" alt="Gabriel Díaz">
+                <h3 class="team-info__title">Jose Gabriel Díaz</h3>
+                <p class="team-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </article>
+
+			<article class="team-info">
+                <img class="team-info__imagen" src="./imagenes/Mariano.png" alt="Mariano Bustamante">
+                <h3 class="team-info__title">Mariano Bustamante</h3>
+                <p class="team-info__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora quas voluptate magni repellat eligendi! Inventore voluptas
+                    voluptates quia voluptatum expedita, ducimus delectus dolore eaque maiores iusto modi eum aut corporis?
+                </p>
+            </article>
+
+        </section>
+		<!-- fin sección de equipo -->
+
+	</main>
+	<!-- fin contenido principal -->
+
+	 <!-- Inicio pie del sitio -->
+	<footer>
+		<section  class="footer-section">
+			<article>
+				<p class="footer-titulo1">Más Información</p>	
+				<p class="footer-contacto">
+					Correo electrónico: ventas@ifruver.com.co<br>
+					Teléfonos: 312 890 3467  - 321 765 8734<br>
+				</p>			
+			</article>
+			<article>
+				<p class="footer-titulo2">Encuentranos en redes sociales</p>
+				<div class="footer-imagen">
+					<a href="https://www.instagram.com/?hl=es" target="blank">
+						<img src="imagenes/instagram.png" class="instagram" >
+					</a>
+					<a href="https://es-la.facebook.com/" target="blank">
+						<img src="imagenes/facebook-icon.png" class="facebook">	
+					</a>			
+				</div>					
+				<h4 id="copyright">
+					Copyright&copy; 2021 - Página creada por Grupo 3 (Equipo 3) Misión TIC UTP - Todos los derechos reservados
+				</h4>
+			</article>
+		</section>
+	</footer>
+	<!-- fin pie del sitio -->
 </body>
 </html>
