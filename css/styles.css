@@ -43,7 +43,7 @@ html, body{
 .nosotros-section,
 .team-section {
     display: flex;
-    margin-bottom: 100px;
+
 }
 
 .nosotros-section {
@@ -104,6 +104,7 @@ html, body{
   margin-left: 5px;
   color: white;
   text-align: center;
+  margin-top: 100px;
 }
 
 #footer h5{
@@ -129,4 +130,8 @@ html, body{
 #boton-carrito{
  text-align: right;
  font: bold;
+}
+
+.my-view{
+  min-height: 400px;
 }
