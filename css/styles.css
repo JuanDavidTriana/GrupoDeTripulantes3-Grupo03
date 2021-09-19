@@ -3,12 +3,6 @@
   font-family: "Krub", sans-serif;
 }
 
-body{
-  max-width: 1400px;
-  min-width: 375px;
-  margin: 5px auto;
-}
-
 html, body{
     box-sizing: border-box;
     min-height: 100%;
@@ -18,48 +12,48 @@ html, body{
   width: 200px;
 }
 
-.menu {
+#menu {
     display: flex;
     padding: 0px;
     background-color: rgb(54, 161, 72);
     align-items: center;
     justify-content: space-around;
-  }
-  .menu a{
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    color:white;    
-  }
-  
-  .menu  a:hover {
-    background-color: #e1e78c;
-    color:black;
-    border-radius: 5px;
-  }
+}
+#menu a{
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color:white;    
+}
 
-  .carrousel{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
+#menu  a:hover {
+  background-color: #e1e78c;
+  color:black;
+  border-radius: 5px;
+}
+
+.carrousel{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nosotros-section,
+.team-section {
     display: flex;
-    justify-content: center;
-  }
+    margin-bottom: 100px;
+}
 
-  .nosotros-section,
-  .team-section {
-      display: flex;
-      margin-bottom: 100px;
-  }
+.nosotros-section {
+    background-color: #f7f7f7;
+    flex-wrap:inherit;
+}
 
-  .nosotros-section {
-      background-color: #f7f7f7;
-      flex-wrap:inherit;
-  }
-
-  .nosotros-header {
-    display: flex;
-    justify-content: left;
+.nosotros-header {
+  display: flex;
+  justify-content: left;
 }
 
 .nosotros-info {
@@ -97,50 +91,42 @@ html, body{
   text-align: center;
 }
 
-  .instagram {
+#instagram {
     max-width: 40px;
-  }
+}
   
-  .facebook {
-    max-width: 40px;
-  }
+#facebook {
+  max-width: 30px;
+}
 
-.footer-section{
+#footer{
   background-color:  rgb(54, 161, 72); 
-  display: flex;
+  margin-left: 5px;
   color: white;
-  height: 200px;
-  position: relative;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.footer-titulo1{
-  font-size: 1.2rem;
-  font-weight: bold;
   text-align: center;
 }
 
-.footer-titulo2{
+#footer h5{
   font-size: 1.2rem;
   font-weight: bold;
-  text-align: center;
+  padding-top: 10px;
 }
 
-.footer-imagen{
+#footer img{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.footer-contacto{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#footer li{
+  list-style: none;
 }
 
 #copyright{
-  text-align: center;
-  color: white;
-  padding-bottom: 10px;
-  background-color: #e1e78c;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#boton-carrito{
+ text-align: right;
+ font: bold;
 }
