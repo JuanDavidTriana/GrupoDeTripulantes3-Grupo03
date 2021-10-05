@@ -1,6 +1,8 @@
 <template>
-  <Carousel />
-  <Team />
+  <div>
+    <Carousel />
+    <Team />
+  </div>
 </template>
 
 <script>
