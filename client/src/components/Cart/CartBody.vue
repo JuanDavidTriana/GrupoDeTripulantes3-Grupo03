@@ -9,7 +9,7 @@
       <div class="info">
         <p>{{ product.name }}</p>
         <div class="price">
-          <p>{{ product.price }} €</p>
+          <p>${{ product.price }} </p>
 
           <div class="quantity">
             <button
