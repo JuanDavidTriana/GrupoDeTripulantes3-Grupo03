@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="header">{{ product.name }}</div>
-      <div class="description">{{ product.price }} €</div>
+      <div class="description">${{ product.price }} </div>
     </div>
     <div class="ui button primary" @click="addProductCart(product.id)">
       Comprar
