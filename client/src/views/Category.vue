@@ -1,6 +1,5 @@
 <template>
   <BasicLayouts>
-    <h1>Ultimos porductos</h1>
     <div class="ui grid">
       <div
         class="sixten wide mobile eigth wide tablet four wide computer column"
@@ -15,27 +14,41 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import BasicLayouts from '../layouts/BasicLayouts.vue';
-import { getProducts } from '../api/product';
 import Product from '../components/Product.vue';
+import { getProductsApi, getProductsCategory } from '../api/product';
 
 export default {
-  name: 'Home',
+  name: 'Category',
   components: {
     BasicLayouts,
     Product,
   },
+  watch: {
+    $route(to, from) {
+      this.getProducts(to.params.category);
+    },
+  },
   setup() {
     let products = ref(null);
+    const { params } = useRoute();
 
     onMounted(async () => {
-      const response = await getProducts(20);
-      products.value = response;
+      getProducts(params.category);
     });
 
+    const getProducts = async (category) => {
+      const response = await getProductsCategory(category);
+      products.value = response;
+    };
+
     return {
+      getProducts,
       products,
     };
   },
 };
 </script>
+
+<style></style>
