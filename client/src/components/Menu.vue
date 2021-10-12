@@ -1,87 +1,94 @@
 <template>
-  <div class="collapse navbar-collapse" id="navbarScroll">
-    <ul
-      class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-      style="--bs-scroll-height: 100px"
-    >
-      <li class="nav-item">
-        <router-link to="/">
-          <a class="nav-link active">Inicio</a>
+  <div class="ui secondary menu">
+    <div class="ui container">
+      <div class="left menu">
+        <router-link class="item" to="/">
+          <img
+            class="ui small image"
+            src="../assets/logo.png"
+            alt="Ecommerce"
+          />
         </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/blog">
-          <a class="nav-link">Blog</a>
+        <template v-for="category in categories" :key="category.id">
+          <router-link class="item" :to="category.slug">
+            {{ category.title }}
+          </router-link>
+        </template>
+      </div>
+      <div class="right menu">
+        <router-link class="item" to="login" v-if="!token">
+          Iniciar sesion
         </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/store">
-          <a class="nav-link">Tienda</a>
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/contact">
-          <a class="nav-link">Contactanos</a>
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/cart">
-          <a class="nav-link" aria-current="page">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-shopping-cart-discount"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="#ffffff"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <circle cx="6" cy="19" r="2" />
-              <circle cx="17" cy="19" r="2" />
-              <path d="M17 17h-11v-14h-2" />
-              <path d="M20 6l-1 7h-13" />
-              <path d="M10 10l6 -6" />
-              <circle cx="10.5" cy="4.5" r=".5" />
-              <circle cx="15.5" cy="9.5" r=".5" />
-            </svg>
-          </a>
-        </router-link>
-      </li>
-    </ul>
-    <!-- Button trigger modal -->
-    <button
-      v-on:click="openModal()"
-      type="button"
-      class="btn btn-light login-button"
-    >
-      Login
-    </button>
-    <form class="d-flex">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-light" type="submit">Search</button>
-    </form>
+        <template v-if="token">
+          <router-link class="item" to="/orders">Pedidos</router-link>
+          <span class="ui item cart">
+            <i class="shopping cart icon" @click="openCart"></i>
+          </span>
+          <span class="ui item logout" @click="logout">
+            <i class="sign-out icon"></i>
+          </span>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { getTokenApi, deleteTokenApi } from '../api/token';
+import { getCategoriesApi } from '../api/category';
+
 export default {
-  name: "Menu",
-  components: {},
-  methods: {
-    openModal: function () {
-      $("#modalId").modal("show");
-    },
+  name: 'Menu',
+
+  setup() {
+    let categories = ref(null);
+    const token = getTokenApi();
+    const store = useStore();
+
+    onMounted(async () => {
+      const response = await getCategoriesApi();
+      categories.value = response;
+    });
+
+    const logout = () => {
+      deleteTokenApi();
+      location.replace('/');
+    };
+
+    const openCart = () => {
+      store.commit('setShowCart', true);
+    };
+
+    return {
+      token,
+      logout,
+      categories,
+      openCart,
+    };
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.ui.menu.secondary {
+  background-image: url('../assets/header-small.jpg');
+  .item {
+    color: #ffffff;
+    &:hover {
+      color: #1fa1f1;
+    }
+  }
+}
+.menu.right {
+  width: 50%;
+  justify-content: flex-end;
+  .logout,
+  .cart {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+</style>

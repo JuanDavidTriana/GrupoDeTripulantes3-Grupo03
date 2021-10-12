@@ -1,22 +1,14 @@
 <template>
   <BasicLayouts>
-    <div class="register">
-      <h2>Registro de usuario</h2>
-      <form class="ui form" @submit.prevent="register">
+    <div class="login">
+      <h2>Iniciar sesión</h2>
+      <form class="ui form" @submit.prevent="login">
         <div class="field">
           <input
             type="text"
             placeholder="Nombre de usuario"
-            v-model="formData.username"
-            :class="{ error: formError.username }"
-          />
-        </div>
-        <div class="field">
-          <input
-            type="email"
-            placeholder="Correo eletronico"
-            v-model="formData.email"
-            :class="{ error: formError.email }"
+            v-model="formData.identifier"
+            :class="{ error: formError.identifier }"
           />
         </div>
         <div class="field">
@@ -27,17 +19,15 @@
             :class="{ error: formError.password }"
           />
         </div>
-
         <button
           type="submit"
           class="ui button fluid primary"
           :class="{ loading }"
         >
-          Crear usuario
+          Entrar
         </button>
       </form>
-
-      <router-link to="/login"> Iniciar sesión </router-link>
+      <router-link to="/register"> Crear una cuenta </router-link>
     </div>
   </BasicLayouts>
 </template>
@@ -47,12 +37,11 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import * as Yup from 'yup';
 import BasicLayouts from '../layouts/BasicLayouts.vue';
-import { registerApi } from '../api/user';
-import { getTokenApi } from '../api/token';
+import { loginApi } from '../api/user';
+import { setTokenApi, getTokenApi } from '../api/token';
 
 export default {
-  name: 'Register',
-
+  name: 'Login',
   components: {
     BasicLayouts,
   },
@@ -65,25 +54,24 @@ export default {
     const token = getTokenApi();
 
     onMounted(() => {
-      if (token) router.push('/');
+      if (token) return router.push('/');
     });
 
     const schemaForm = Yup.object().shape({
-      username: Yup.string().required(true),
-      email: Yup.string()
-        .email(true)
-        .required(true),
+      identifier: Yup.string().required(true),
       password: Yup.string().required(true),
     });
 
-    const register = async () => {
+    const login = async () => {
       formError.value = {};
-      loading.value = true;
+
       try {
         await schemaForm.validate(formData.value, { abortEarly: false });
         try {
-          const response = await registerApi(formData.value);
-          router.push('/login');
+          const reponse = await loginApi(formData.value);
+          if (!reponse?.jwt) throw 'El usuario o contraseña no son validos';
+          setTokenApi(reponse.jwt);
+          router.push('/');
         } catch (error) {
           console.log(error);
         }
@@ -96,21 +84,20 @@ export default {
 
     return {
       formData,
-      register,
       formError,
       loading,
+      login,
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.register {
+.login {
   text-align: center;
   h2 {
     margin: 50px 0 30px 0;
   }
-
   .ui.form {
     max-width: 300px !important;
     margin: 0 auto;

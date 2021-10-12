@@ -1,33 +1,80 @@
 <template>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div col-lg-12 col-m-8 col-s-4>
-          <h2 class="text-center"><strong>Carrito de Compras</strong></h2>
-          <br />
-          <CartElements />
-          <div id="boton-carrito">
-            <button class="btn btn-outline-success" type="submit">
-              Confirmar Pedido
-            </button>
-            <button class="btn btn-outline-success" type="submit">
-              Vaciar Carrito
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+  <BasicLayouts>
+    <h1>Carrito</h1>
+    <table class="ui celled table" v-if="products">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in products" :key="product.id">
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }} $</td>
+          <td style="text-align: center">
+            <i class="close icon" @click="deleteAllProductCart(product.id)"></i>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Total:</td>
+          <td colspan="2">{{ getTotal() }} $</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="ui button primary fluid">
+      Generar pedido
+    </button>
+
+    <h3 v-if="!products">No tienes productos en el carrito</h3>
+  </BasicLayouts>
 </template>
 
 <script>
-// @ is an alias to /src
-import CartElements from "@/components/CartElements.vue";
+import { ref, watchEffect } from 'vue';
+import BasicLayouts from '../layouts/BasicLayouts.vue';
+import { getProductsCartApi, deleteAllProductCartApi } from '../api/cart';
 
 export default {
-  name: "Home",
+  name: 'Cart',
   components: {
-    CartElements,
+    BasicLayouts,
+  },
+  setup() {
+    let products = ref(null);
+    let realodCart = ref(false);
+
+    watchEffect(async () => {
+      realodCart.value;
+      const response = await getProductsCartApi();
+      products.value = response;
+    });
+
+    const getTotal = () => {
+      let totalTemp = 0;
+      products.value.forEach((product) => {
+        totalTemp += product.price * product.quantity;
+      });
+      return totalTemp.toFixed(2);
+    };
+
+    const deleteAllProductCart = (idProduct) => {
+      deleteAllProductCartApi(idProduct);
+      realodCart.value = !realodCart.value;
+    };
+
+    return {
+      products,
+      getTotal,
+      deleteAllProductCart,
+    };
   },
 };
 </script>
+
+<style></style>
