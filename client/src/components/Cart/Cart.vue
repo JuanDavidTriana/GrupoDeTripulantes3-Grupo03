@@ -1,28 +1,30 @@
 <template>
-  <div class="cart-dimmer" :class="{ open: showCart }" @click="closeCart" />
-  <div class="cart" :class="{ open: showCart }">
-    <div>
-      <CartHeader :closeCart="closeCart" />
-      <CartBody :products="products" :realoadCartFn="realoadCartFn" />
+  <div>
+    <div class="cart-dimmer" :class="{ open: showCart }" @click="closeCart" />
+    <div class="cart" :class="{ open: showCart }">
+      <div>
+        <CartHeader :closeCart="closeCart" />
+        <CartBody :products="products" :realoadCartFn="realoadCartFn" />
+      </div>
+      <CartFooter
+        :products="products"
+        :realoadCartFn="realoadCartFn"
+        v-if="products"
+      />
     </div>
-    <CartFooter
-      :products="products"
-      :realoadCartFn="realoadCartFn"
-      v-if="products"
-    />
   </div>
 </template>
 
 <script>
-import { ref, computed, watchEffect, watch } from 'vue';
-import { useStore } from 'vuex';
-import CartHeader from './CartHeader.vue';
-import CartBody from './CartBody.vue';
-import CartFooter from './CartFooter.vue';
-import { getProductsCartApi } from '../../api/cart';
+import { ref, computed, watchEffect, watch } from "vue";
+import { useStore } from "vuex";
+import CartHeader from "./CartHeader.vue";
+import CartBody from "./CartBody.vue";
+import CartFooter from "./CartFooter.vue";
+import { getProductsCartApi } from "../../api/cart";
 
 export default {
-  name: 'Cart',
+  name: "Cart",
 
   components: {
     CartHeader,
@@ -48,7 +50,7 @@ export default {
     });
 
     const closeCart = () => {
-      store.commit('setShowCart', false);
+      store.commit("setShowCart", false);
     };
 
     const realoadCartFn = () => {
