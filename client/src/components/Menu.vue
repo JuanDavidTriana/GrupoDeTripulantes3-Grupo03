@@ -5,7 +5,7 @@
         <router-link class="item" to="/">
           <img
             class="ui small image"
-            src="../assets/logo.png"
+            src="../assets/ifruverLogo.jpeg"
             alt="Ecommerce"
           />
         </router-link>
@@ -73,11 +73,12 @@ export default {
 
 <style lang="scss" scoped>
 .ui.menu.secondary {
-  background-image: url("../assets/header-small.jpg");
+  color: rgb(54, 161, 72);
+
   .item {
-    color: #ffffff;
+    color: rgb(54, 161, 72);
     &:hover {
-      color: rgb(54, 161, 72);
+      color: rgb(200, 224, 63);
     }
   }
 }
